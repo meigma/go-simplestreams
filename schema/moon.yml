@@ -66,6 +66,36 @@ tasks:
     options:
       cache: false
 
+  vet-linuxcontainers-products:
+    command: "proto run cue -- vet -c . -d '#LinuxContainersProductFile' testdata/linuxcontainers/products.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  vet-incus-products:
+    command: "proto run cue -- vet -c . -d '#IncusProductFile' testdata/incus/products.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  vet-lxd-products:
+    command: "proto run cue -- vet -c . -d '#LXDProductFile' testdata/lxd/products.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
   generate-check:
     command: 'bash -lc "proto run cue -- exp gengotypes . && git diff --exit-code -- ."'
     toolchains: ['go']
@@ -93,6 +123,9 @@ tasks:
       - 'schema:tidy'
       - 'schema:vet-index'
       - 'schema:vet-products'
+      - 'schema:vet-linuxcontainers-products'
+      - 'schema:vet-incus-products'
+      - 'schema:vet-lxd-products'
       - 'schema:test'
     options:
       cache: false

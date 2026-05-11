@@ -1,0 +1,52 @@
+{
+  "format": "products:1.0",
+  "content_id": "images",
+  "datatype": "image-downloads",
+  "products": {
+    "debian:bookworm:amd64:default": {
+      "aliases": "debian/bookworm/default,debian/bookworm,debian/12/default,debian/12",
+      "arch": "amd64",
+      "distro": "debian",
+      "os": "debian",
+      "release": "bookworm",
+      "release_title": "Debian 12 bookworm",
+      "variant": "default",
+      "requirements": {
+        "secureboot": "false"
+      },
+      "versions": {
+        "20260508_0431": {
+          "items": {
+            "lxd.tar.xz": {
+              "ftype": "lxd.tar.xz",
+              "path": "images/debian/bookworm/amd64/default/20260508_0431/lxd.tar.xz",
+              "size": 688,
+              "sha256": "71477bddd21b90b62be4d8d52a6915f39a58b2c3c5c6eb6048cc59527318d31a",
+              "combined_squashfs_sha256": "cfc89fd421b1e9adcf1ca2189841c822eb99dd9b4f21d187e9de926ad4104633",
+              "combined_disk-kvm-img_sha256": "307028f999c8a0ae93ed65f1444069bc154ad41ba988382d16b1cf7cdecc35da"
+            },
+            "disk.qcow2": {
+              "ftype": "disk-kvm.img",
+              "path": "images/debian/bookworm/amd64/default/20260508_0431/disk.qcow2",
+              "size": 373754368,
+              "sha256": "22603ac811bcf040a82d1f7fc2871f7071c7814d4ee3e30dd7e46e3e9700a7e5"
+            },
+            "disk.20260507_0441.qcow2.vcdiff": {
+              "ftype": "disk-kvm.img.vcdiff",
+              "path": "images/debian/bookworm/amd64/default/20260508_0431/disk.20260507_0441.qcow2.vcdiff",
+              "size": 179113650,
+              "sha256": "67d9c3d9ad76d2397c18cd0d80da0cd96ece73e399800ffcd8cddfa959dc5643",
+              "delta_base": "20260507_0441"
+            },
+            "rootfs.squashfs": {
+              "ftype": "squashfs",
+              "path": "images/debian/bookworm/amd64/default/20260508_0431/rootfs.squashfs",
+              "size": 109580288,
+              "sha256": "f631792f218875066b582c18cbbfd59e1ca5e3108bee2f3d2f08684b81c2369b"
+            }
+          }
+        }
+      }
+    }
+  }
+}

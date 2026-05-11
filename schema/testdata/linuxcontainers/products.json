@@ -1,0 +1,36 @@
+{
+  "format": "products:1.0",
+  "content_id": "images",
+  "datatype": "image-downloads",
+  "products": {
+    "debian:bookworm:amd64:default": {
+      "aliases": "debian/bookworm/default,debian/bookworm,debian/12/default,debian/12",
+      "arch": "amd64",
+      "os": "debian",
+      "release": "bookworm",
+      "release_title": "Debian 12 bookworm",
+      "variant": "default",
+      "requirements": {},
+      "versions": {
+        "20260511_05:24": {
+          "items": {
+            "lxd.tar.xz": {
+              "ftype": "lxd.tar.xz",
+              "path": "images/debian/bookworm/amd64/default/20260511_05:24/lxd.tar.xz",
+              "size": 688,
+              "sha256": "39e0ee4e85dd5fcc153ab6e3b6575113f679b5f76a4c1886088eb288c9cc71b5",
+              "combined_squashfs_sha256": "fa7f9ee35c0a6666ac3f0c549a030386dcc79dcf6ddde9891d98a3417034d54a",
+              "combined_disk-kvm-img_sha256": "96d197fea165faf7478ff2e59e710a1f75f45277006be3103ea235bb7456fc74"
+            },
+            "rootfs.squashfs": {
+              "ftype": "squashfs",
+              "path": "images/debian/bookworm/amd64/default/20260511_05:24/rootfs.squashfs",
+              "size": 111366144,
+              "sha256": "1ea77823d43770999779f62c505266a0868f8990607c0a7cf2c9bbd66bbea9e3"
+            }
+          }
+        }
+      }
+    }
+  }
+}
