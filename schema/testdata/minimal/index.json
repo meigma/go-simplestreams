@@ -1,0 +1,15 @@
+{
+  "format": "index:1.0",
+  "updated": "Tue, 15 Sep 2015 16:15:24 -0400",
+  "index": {
+    "com.example:released:download": {
+      "format": "products:1.0",
+      "datatype": "image-downloads",
+      "path": "streams/v1/com.example:released:download.json",
+      "updated": "Tue, 15 Sep 2015 16:15:24 -0400",
+      "products": [
+        "com.example:server:1.0:amd64"
+      ]
+    }
+  }
+}

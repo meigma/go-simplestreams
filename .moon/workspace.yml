@@ -7,6 +7,7 @@ projects:
   sources:
     root: '.'
     docs: 'docs'
+    schema: 'schema'
 
   # Uncomment to auto-discover more projects as the repository grows.
   # globs:
