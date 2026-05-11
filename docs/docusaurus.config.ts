@@ -3,15 +3,15 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'template-go',
-  tagline: 'Meigma Go repository template',
+  title: 'go-simplestreams',
+  tagline: 'Go library for simplestreams metadata',
   future: {
     v4: true,
   },
-  url: 'https://docs.example.com',
-  baseUrl: '/',
+  url: 'https://meigma.github.io',
+  baseUrl: '/go-simplestreams/',
   organizationName: 'meigma',
-  projectName: 'template-go',
+  projectName: 'go-simplestreams',
   onBrokenLinks: 'throw',
   markdown: {
     hooks: {
@@ -31,7 +31,7 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: false,
           breadcrumbs: false,
-          editUrl: 'https://github.com/meigma/template-go/edit/master/docs/',
+          editUrl: 'https://github.com/meigma/go-simplestreams/edit/master/docs/',
         },
         blog: false,
         theme: {
@@ -46,10 +46,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'template-go',
+      title: 'go-simplestreams',
       items: [
         {
-          href: 'https://github.com/meigma/template-go',
+          href: 'https://github.com/meigma/go-simplestreams',
           label: 'GitHub',
           position: 'right',
           className: 'navbar__item--github',
