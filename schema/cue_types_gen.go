@@ -47,228 +47,6 @@ type DataType string
 // MetadataPath is a Simple Streams metadata path ending in a supported file format.
 type MetadataPath string
 
-// LinuxContainersProductFile is the shared Linux Containers image server profile.
-type LinuxContainersProductFile struct {
-	Format ProductsFormat `json:"format"`
-
-	ContentID string `json:"content_id"`
-
-	DataType string `json:"datatype"`
-
-	Updated Timestamp `json:"updated,omitempty"`
-
-	Products map[string]LinuxContainersProduct `json:"products"`
-}
-
-// ProductsFormat is the format marker for a Simple Streams product document.
-type ProductsFormat string
-
-// LinuxContainersProduct describes shared Incus/LXD image product metadata.
-type LinuxContainersProduct struct {
-	Aliases string `json:"aliases"`
-
-	Arch string `json:"arch"`
-
-	OS string `json:"os"`
-
-	Release string `json:"release"`
-
-	ReleaseTitle string `json:"release_title"`
-
-	Variant string `json:"variant"`
-
-	Requirements LinuxContainersRequirements `json:"requirements"`
-
-	Versions map[string]LinuxContainersVersion `json:"versions"`
-}
-
-// LinuxContainersRequirements describes image runtime requirements.
-type LinuxContainersRequirements struct {
-	Cgroup string `json:"cgroup,omitempty"`
-
-	SecureBoot StringBool `json:"secureboot,omitempty"`
-
-	CDROMAgent StringBool `json:"cdrom_agent,omitempty"`
-
-	CDROMCloudInit StringBool `json:"cdrom_cloud_init,omitempty"`
-}
-
-// StringBool is a boolean encoded as a JSON string, matching current image streams.
-type StringBool string
-
-// LinuxContainersVersion describes one image build.
-type LinuxContainersVersion struct {
-	Items map[string]LinuxContainersItem `json:"items"`
-}
-
-// LinuxContainersItem describes shared Linux Containers image artifacts.
-type LinuxContainersItem struct {
-	FileType LinuxContainersFileType `json:"ftype"`
-
-	Path RelativePath `json:"path"`
-
-	Size Size `json:"size"`
-
-	SHA256 Checksum `json:"sha256"`
-
-	DeltaBase string `json:"delta_base,omitempty"`
-
-	CombinedSHA256 Checksum `json:"combined_sha256,omitempty"`
-
-	CombinedRootXZSHA256 Checksum `json:"combined_rootxz_sha256,omitempty"`
-
-	CombinedSquashfsSHA256 Checksum `json:"combined_squashfs_sha256,omitempty"`
-
-	CombinedDiskKVMImageSHA256 Checksum `json:"combined_disk-kvm-img_sha256,omitempty"`
-}
-
-// LinuxContainersFileType is the artifact vocabulary shared by current Incus and LXD streams.
-type LinuxContainersFileType string
-
-// Size is the declared byte size of an artifact item.
-type Size int64
-
-// Checksum is an artifact checksum value.
-type Checksum string
-
-// IncusProductFile is the Incus/Linux Containers image server profile.
-type IncusProductFile struct {
-	Format ProductsFormat `json:"format"`
-
-	ContentID string `json:"content_id"`
-
-	DataType string `json:"datatype"`
-
-	Updated Timestamp `json:"updated,omitempty"`
-
-	Products map[string]IncusProduct `json:"products"`
-}
-
-// IncusProduct describes Incus/Linux Containers image product metadata.
-type IncusProduct struct {
-	Aliases string `json:"aliases"`
-
-	Arch string `json:"arch"`
-
-	OS string `json:"os"`
-
-	Release string `json:"release"`
-
-	ReleaseTitle string `json:"release_title"`
-
-	Variant string `json:"variant"`
-
-	Requirements IncusRequirements `json:"requirements"`
-
-	Versions map[string]IncusVersion `json:"versions"`
-}
-
-// IncusRequirements allows the broader current Linux Containers requirement vocabulary.
-type IncusRequirements struct {
-	Cgroup string `json:"cgroup,omitempty"`
-
-	SecureBoot StringBool `json:"secureboot,omitempty"`
-
-	CDROMAgent StringBool `json:"cdrom_agent,omitempty"`
-
-	CDROMCloudInit StringBool `json:"cdrom_cloud_init,omitempty"`
-}
-
-// IncusVersion describes one Incus/Linux Containers image build.
-type IncusVersion struct {
-	Items map[string]IncusItem `json:"items"`
-}
-
-// IncusItem describes Incus/Linux Containers image artifacts.
-type IncusItem struct {
-	FileType IncusFileType `json:"ftype"`
-
-	Path RelativePath `json:"path"`
-
-	Size Size `json:"size"`
-
-	SHA256 Checksum `json:"sha256"`
-
-	DeltaBase string `json:"delta_base,omitempty"`
-
-	CombinedSHA256 Checksum `json:"combined_sha256,omitempty"`
-
-	CombinedRootXZSHA256 Checksum `json:"combined_rootxz_sha256,omitempty"`
-
-	CombinedSquashfsSHA256 Checksum `json:"combined_squashfs_sha256,omitempty"`
-
-	CombinedDiskKVMImageSHA256 Checksum `json:"combined_disk-kvm-img_sha256,omitempty"`
-}
-
-// IncusFileType is the current Incus/Linux Containers artifact vocabulary.
-type IncusFileType string
-
-// LXDProductFile is the Canonical LXD image server profile.
-type LXDProductFile struct {
-	Format ProductsFormat `json:"format"`
-
-	ContentID string `json:"content_id"`
-
-	DataType string `json:"datatype"`
-
-	Updated Timestamp `json:"updated,omitempty"`
-
-	Products map[string]LXDProduct `json:"products"`
-}
-
-// LXDProduct describes Canonical LXD image product metadata.
-type LXDProduct struct {
-	Aliases string `json:"aliases"`
-
-	Arch string `json:"arch"`
-
-	Distro string `json:"distro"`
-
-	OS string `json:"os"`
-
-	Release string `json:"release"`
-
-	ReleaseTitle string `json:"release_title"`
-
-	Variant string `json:"variant"`
-
-	Requirements LXDRequirements `json:"requirements"`
-
-	Versions map[string]LXDVersion `json:"versions"`
-}
-
-// LXDRequirements allows the narrower current Canonical LXD requirement vocabulary.
-type LXDRequirements struct {
-	Cgroup string `json:"cgroup,omitempty"`
-
-	SecureBoot StringBool `json:"secureboot,omitempty"`
-}
-
-// LXDVersion describes one Canonical LXD image build.
-type LXDVersion struct {
-	Items map[string]LXDItem `json:"items"`
-}
-
-// LXDItem describes Canonical LXD image artifacts.
-type LXDItem struct {
-	FileType LXDFileType `json:"ftype"`
-
-	Path RelativePath `json:"path"`
-
-	Size Size `json:"size"`
-
-	SHA256 Checksum `json:"sha256"`
-
-	DeltaBase string `json:"delta_base,omitempty"`
-
-	CombinedSquashfsSHA256 Checksum `json:"combined_squashfs_sha256,omitempty"`
-
-	CombinedDiskKVMImageSHA256 Checksum `json:"combined_disk-kvm-img_sha256,omitempty"`
-}
-
-// LXDFileType is the current Canonical LXD artifact vocabulary.
-type LXDFileType string
-
 // ProductFile is a Simple Streams product document.
 type ProductFile struct {
 	// Format identifies this document as a Simple Streams product document.
@@ -286,6 +64,9 @@ type ProductFile struct {
 	// Products maps product names to product metadata and versions.
 	Products map[string]Product `json:"products"`
 }
+
+// ProductsFormat is the format marker for a Simple Streams product document.
+type ProductsFormat string
 
 // Product describes one product in a Simple Streams product document.
 type Product struct {
@@ -322,6 +103,12 @@ type Item struct {
 	// Mirrors lists alternate mirror prefixes for the artifact path.
 	Mirrors []Mirror `json:"mirrors,omitempty"`
 }
+
+// Size is the declared byte size of an artifact item.
+type Size int64
+
+// Checksum is an artifact checksum value.
+type Checksum string
 
 // Mirror is an alternate mirror prefix for an item path.
 type Mirror string
