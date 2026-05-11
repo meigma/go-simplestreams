@@ -1,16 +1,15 @@
 ---
-title: template-go Docs
+title: go-simplestreams Docs
 slug: /
-description: Starting point for Meigma Go projects.
+description: Go library for simplestreams metadata.
 ---
 
-# template-go Docs
+# go-simplestreams Docs
 
-This repository is the starting point for Meigma Go projects.
+`go-simplestreams` is a Go library for working with simplestreams protocol metadata.
 
-Generated projects should replace this page with project-specific documentation after bootstrapping:
+The public import path is:
 
-- project summary
-- quick start
-- operating notes
-- support and security paths
+```sh
+go get github.com/meigma/go-simplestreams
+```

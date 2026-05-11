@@ -13,13 +13,13 @@
 
 [repository]
 default_branch = "master"
-is_template = true
+is_template = false
 immutable_releases = true
 
 has_wiki = false
 has_issues = true
 has_projects = false
-has_discussions = true
+has_discussions = false
 
 allow_merge_commit = false
 allow_squash_merge = true
@@ -94,12 +94,10 @@ bypass = [
 ]
 
 [rulesets.tags_default.status_checks]
-enabled = true
+enabled = false
 strict_required_status_checks_policy = false
 do_not_enforce_on_create = false
 contexts = [
-  # "release-dry-run",
-  # "release",
 ]
 
 [unsupported]

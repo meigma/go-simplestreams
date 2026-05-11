@@ -6,8 +6,8 @@ tags:
   - 'docusaurus'
 
 project:
-  title: 'template-go docs'
-  description: 'Docusaurus documentation site for the Meigma Go repository template.'
+  title: 'go-simplestreams docs'
+  description: 'Docusaurus documentation site for go-simplestreams.'
   owner: 'meigma'
   maintainers:
     - 'meigma'
