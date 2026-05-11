@@ -1,0 +1,50 @@
+# Active toolchains for the current template.
+# The docs project uses npm today, but this file is meant to be a starting
+# point for future repos that may choose different ecosystems.
+
+javascript:
+  packageManager: 'npm'
+  inferTasksFromScripts: false
+  dedupeOnLockfileChange: false
+  syncProjectWorkspaceDependencies: false
+
+npm: {}
+
+node:
+  version: '22.22.2'
+  syncVersionManagerConfig: 'nvm'
+
+go:
+  version: '1.26.2'
+
+# Configure npm directly when you want to pin the CLI or customize installs.
+# npm:
+#   version: 'REPLACE_ME_NPM_VERSION'
+#   installArgs: ['--include=dev']
+
+# Swap npm for pnpm, yarn, bun, or deno as needed.
+# javascript:
+#   packageManager: 'pnpm'
+#   inferTasksFromScripts: true
+#
+# pnpm:
+#   version: 'REPLACE_ME_PNPM_VERSION'
+#
+# bun:
+#   version: 'REPLACE_ME_BUN_VERSION'
+#
+# deno:
+#   version: 'REPLACE_ME_DENO_VERSION'
+
+# Stable non-JavaScript toolchains in Moon v2.
+# rust:
+#   version: 'REPLACE_ME_RUST_VERSION'
+#   components: ['clippy', 'rustfmt']
+
+# Python remains unstable in Moon v2.
+# unstable_python:
+#   version: 'REPLACE_ME_PYTHON_VERSION'
+#   packageManager: 'uv'
+#
+# unstable_uv:
+#   version: 'REPLACE_ME_UV_VERSION'

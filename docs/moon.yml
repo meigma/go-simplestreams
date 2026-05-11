@@ -1,0 +1,61 @@
+language: 'typescript'
+layer: 'application'
+stack: 'frontend'
+tags:
+  - 'docs'
+  - 'docusaurus'
+
+project:
+  title: 'template-go docs'
+  description: 'Docusaurus documentation site for the Meigma Go repository template.'
+  owner: 'meigma'
+  maintainers:
+    - 'meigma'
+
+toolchains:
+  default: 'node'
+
+fileGroups:
+  configs:
+    - 'docusaurus.config.ts'
+    - 'tsconfig.json'
+    - 'package.json'
+    - 'package-lock.json'
+  sources:
+    - 'docs/**/*'
+    - 'src/**/*'
+    - 'static/**/*'
+
+tasks:
+  install:
+    command: 'npm ci'
+    toolchains: ['javascript', 'node', 'npm']
+    inputs:
+      - 'package.json'
+      - 'package-lock.json'
+    outputs:
+      - 'node_modules/.package-lock.json'
+    options:
+      cache: false
+
+  build:
+    command: 'npm run build'
+    toolchains: ['javascript', 'node', 'npm']
+    deps:
+      - 'docs:install'
+    inputs:
+      - '@group(configs)'
+      - '@group(sources)'
+    outputs:
+      - 'build/**/*'
+
+  typecheck:
+    command: 'npm run typecheck'
+    toolchains: ['javascript', 'node', 'npm']
+    deps:
+      - 'docs:install'
+    inputs:
+      - '@group(configs)'
+      - '@group(sources)'
+    options:
+      cache: false
