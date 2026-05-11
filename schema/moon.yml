@@ -21,8 +21,10 @@ fileGroups:
     - '**/*.cue'
   fixtures:
     - 'testdata/**/*.json'
+    - '*/testdata/**/*.json'
   goSources:
     - '*.go'
+    - '**/*.go'
   protoConfig:
     - '/.prototools'
     - '/.moon/proto/cue.toml'
@@ -66,8 +68,38 @@ tasks:
     options:
       cache: false
 
+  vet-linuxcontainers-products:
+    command: "proto run cue -- vet -c ./linuxcontainers -d '#ProductFile' linuxcontainers/testdata/products.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  vet-incus-products:
+    command: "proto run cue -- vet -c ./incus -d '#ProductFile' incus/testdata/products.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  vet-lxd-products:
+    command: "proto run cue -- vet -c ./lxd -d '#ProductFile' lxd/testdata/products.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
   generate-check:
-    command: 'bash -lc "proto run cue -- exp gengotypes . && git diff --exit-code -- ."'
+    command: 'bash -lc "proto run cue -- exp gengotypes ./... && git diff --exit-code -- ."'
     toolchains: ['go']
     inputs:
       - '@group(cueSources)'
@@ -93,6 +125,9 @@ tasks:
       - 'schema:tidy'
       - 'schema:vet-index'
       - 'schema:vet-products'
+      - 'schema:vet-linuxcontainers-products'
+      - 'schema:vet-incus-products'
+      - 'schema:vet-lxd-products'
       - 'schema:test'
     options:
       cache: false

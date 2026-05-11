@@ -1,0 +1,57 @@
+{
+  "format": "products:1.0",
+  "content_id": "images",
+  "datatype": "image-downloads",
+  "products": {
+    "debian:bookworm:amd64:default": {
+      "aliases": "debian/bookworm/default,debian/bookworm,debian/12/default,debian/12",
+      "arch": "amd64",
+      "os": "debian",
+      "release": "bookworm",
+      "release_title": "Debian 12 bookworm",
+      "variant": "default",
+      "requirements": {
+        "cdrom_agent": "true"
+      },
+      "versions": {
+        "20260511_05:24": {
+          "items": {
+            "incus.tar.xz": {
+              "ftype": "incus.tar.xz",
+              "path": "images/debian/bookworm/amd64/default/20260511_05:24/incus.tar.xz",
+              "size": 688,
+              "sha256": "39e0ee4e85dd5fcc153ab6e3b6575113f679b5f76a4c1886088eb288c9cc71b5",
+              "combined_sha256": "7f23d644c828708104084e80c6697f409670b5ba6fd386aae22778e1915e3055",
+              "combined_rootxz_sha256": "7f23d644c828708104084e80c6697f409670b5ba6fd386aae22778e1915e3055",
+              "combined_squashfs_sha256": "fa7f9ee35c0a6666ac3f0c549a030386dcc79dcf6ddde9891d98a3417034d54a",
+              "combined_disk-kvm-img_sha256": "96d197fea165faf7478ff2e59e710a1f75f45277006be3103ea235bb7456fc74"
+            },
+            "lxd.tar.xz": {
+              "ftype": "lxd.tar.xz",
+              "path": "images/debian/bookworm/amd64/default/20260511_05:24/incus.tar.xz",
+              "size": 688,
+              "sha256": "39e0ee4e85dd5fcc153ab6e3b6575113f679b5f76a4c1886088eb288c9cc71b5",
+              "combined_sha256": "7f23d644c828708104084e80c6697f409670b5ba6fd386aae22778e1915e3055",
+              "combined_rootxz_sha256": "7f23d644c828708104084e80c6697f409670b5ba6fd386aae22778e1915e3055",
+              "combined_squashfs_sha256": "fa7f9ee35c0a6666ac3f0c549a030386dcc79dcf6ddde9891d98a3417034d54a",
+              "combined_disk-kvm-img_sha256": "96d197fea165faf7478ff2e59e710a1f75f45277006be3103ea235bb7456fc74"
+            },
+            "root.tar.xz": {
+              "ftype": "root.tar.xz",
+              "path": "images/debian/bookworm/amd64/default/20260511_05:24/rootfs.tar.xz",
+              "size": 98548916,
+              "sha256": "8eea7bd485b92b89c987976fa6a2ebe54ecd7bd9c0947d6da0b70c7ab528c121"
+            },
+            "root.20260510_05:24.vcdiff": {
+              "ftype": "squashfs.vcdiff",
+              "path": "images/debian/bookworm/amd64/default/20260511_05:24/delta-20260510_05:24.vcdiff",
+              "size": 1012576,
+              "sha256": "f927c30deee3a92aea4a1bdd45a1004643b0f4a84261b2da03c299c09bd97ddc",
+              "delta_base": "20260510_05:24"
+            }
+          }
+        }
+      }
+    }
+  }
+}
