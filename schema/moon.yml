@@ -1,0 +1,99 @@
+language: 'go'
+layer: 'library'
+stack: 'backend'
+tags:
+  - 'cue'
+  - 'schema'
+
+project:
+  title: 'go-simplestreams schema'
+  description: 'CUE schema module and generated Go types for Simple Streams metadata.'
+  owner: 'meigma'
+  maintainers:
+    - 'meigma'
+
+toolchains:
+  default: 'go'
+
+fileGroups:
+  cueSources:
+    - 'cue.mod/module.cue'
+    - '**/*.cue'
+  fixtures:
+    - 'testdata/**/*.json'
+  goSources:
+    - '*.go'
+  protoConfig:
+    - '/.prototools'
+    - '/.moon/proto/cue.toml'
+
+tasks:
+  format:
+    command: 'proto run cue -- fmt --check --files .'
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  tidy:
+    command: 'proto run cue -- mod tidy --check'
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  vet-index:
+    command: "proto run cue -- vet -c . -d '#IndexFile' testdata/minimal/index.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  vet-products:
+    command: "proto run cue -- vet -c . -d '#ProductFile' testdata/minimal/products.json"
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(fixtures)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  generate-check:
+    command: 'bash -lc "proto run cue -- exp gengotypes . && git diff --exit-code -- ."'
+    toolchains: ['go']
+    inputs:
+      - '@group(cueSources)'
+      - '@group(goSources)'
+      - '@group(protoConfig)'
+    options:
+      cache: false
+
+  test:
+    command: 'go test ./...'
+    toolchains: ['go']
+    deps:
+      - 'schema:generate-check'
+    inputs:
+      - '@group(goSources)'
+      - '/go.mod'
+    options:
+      cache: false
+
+  check:
+    deps:
+      - 'schema:format'
+      - 'schema:tidy'
+      - 'schema:vet-index'
+      - 'schema:vet-products'
+      - 'schema:test'
+    options:
+      cache: false
+      runInCI: true

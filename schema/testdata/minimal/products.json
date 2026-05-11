@@ -1,0 +1,22 @@
+{
+  "format": "products:1.0",
+  "content_id": "com.example:released:download",
+  "datatype": "image-downloads",
+  "updated": "Tue, 15 Sep 2015 16:15:24 -0400",
+  "products": {
+    "com.example:server:1.0:amd64": {
+      "versions": {
+        "20260511": {
+          "items": {
+            "disk1.img": {
+              "ftype": "disk1.img",
+              "path": "server/releases/20260511/disk1.img",
+              "sha256": "0123456789abcdef",
+              "size": 12345
+            }
+          }
+        }
+      }
+    }
+  }
+}
