@@ -25,7 +25,8 @@ fileGroups:
   releaseConfig:
     - 'release-please-config.json'
     - '.release-please-manifest.json'
-    - '.github/workflows.disabled/release-please.yml'
+    - '.github/repository-settings.toml'
+    - '.github/workflows/release-please.yml'
 
 workspace:
   inheritedTasks:

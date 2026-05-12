@@ -1,13 +1,3 @@
-# Disabled workflow template.
-# To enable it, move this file to .github/workflows/release-please.yml and
-# configure the release app credentials documented below.
-#
-# Required repository settings:
-# - vars.MEIGMA_RELEASE_APP_ID
-# - secrets.MEIGMA_RELEASE_APP_PRIVATE_KEY
-# - protected-tag ruleset bypass for the release app, because this workflow
-#   creates protected v* tags after the release PR is merged.
-
 name: Release Please
 
 on:
@@ -17,6 +7,10 @@ on:
   workflow_dispatch:
 
 permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   release-please:

@@ -88,9 +88,7 @@ block_force_pushes = true
 
 bypass = [
   { type = "repository_admin_role", mode = "always" },
-  # Enable the release workflow before uncommenting this app bypass. Release
-  # Please needs tag-creation bypass because tags are protected here.
-  # { type = "app", slug = "meigma-release-please", mode = "always" },
+  { type = "integration", actor_id = 3342783, mode = "always" },
 ]
 
 [rulesets.tags_default.status_checks]
