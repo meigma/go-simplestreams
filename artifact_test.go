@@ -3,6 +3,7 @@ package simplestreams_test
 import (
 	"crypto/sha256"
 	"crypto/sha512"
+	"errors"
 	"fmt"
 	"strings"
 	"testing"
@@ -89,4 +90,29 @@ func TestVerifyReader(t *testing.T) {
 			require.NoError(t, err)
 		})
 	}
+}
+
+func TestSHA256ConcatReadsReadersInOrder(t *testing.T) {
+	got, err := simplestreams.SHA256Concat(strings.NewReader("ab"), strings.NewReader("c"))
+	require.NoError(t, err)
+	want := fmt.Sprintf("%x", sha256.Sum256([]byte("abc")))
+	assert.Equal(t, want, got)
+
+	reordered, err := simplestreams.SHA256Concat(strings.NewReader("c"), strings.NewReader("ab"))
+	require.NoError(t, err)
+	assert.NotEqual(t, got, reordered)
+}
+
+func TestSHA256ConcatReportsReadErrors(t *testing.T) {
+	_, err := simplestreams.SHA256Concat(strings.NewReader("ok"), failingReader{err: errors.New("boom")})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "boom")
+}
+
+type failingReader struct {
+	err error
+}
+
+func (reader failingReader) Read(_ []byte) (int, error) {
+	return 0, reader.err
 }

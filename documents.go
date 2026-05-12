@@ -11,8 +11,11 @@ import (
 )
 
 const (
-	indexFormat   = "index:1.0"
-	productFormat = "products:1.0"
+	// IndexFormat is the format marker for a Simple Streams index document.
+	IndexFormat = "index:1.0"
+
+	// ProductsFormat is the format marker for a Simple Streams product document.
+	ProductsFormat = "products:1.0"
 )
 
 // Index is a Simple Streams index document.
@@ -388,8 +391,8 @@ func decodeIndex(data []byte, mirror *Mirror, path RelativePath) (*Index, error)
 	if err := decodeStrict(data, &raw); err != nil {
 		return nil, fmt.Errorf("simplestreams: decode index %q: %w", path, err)
 	}
-	if raw.Format != indexFormat {
-		return nil, fmt.Errorf("simplestreams: index %q has format %q, want %q", path, raw.Format, indexFormat)
+	if raw.Format != IndexFormat {
+		return nil, fmt.Errorf("simplestreams: index %q has format %q, want %q", path, raw.Format, IndexFormat)
 	}
 	if raw.Index == nil {
 		return nil, fmt.Errorf("simplestreams: index %q missing index entries", path)
@@ -442,8 +445,13 @@ func decodeProductFile(data []byte, mirror *Mirror, path RelativePath) (*Product
 	if err := decodeStrict(data, &raw); err != nil {
 		return nil, fmt.Errorf("simplestreams: decode product file %q: %w", path, err)
 	}
-	if raw.Format != productFormat {
-		return nil, fmt.Errorf("simplestreams: product file %q has format %q, want %q", path, raw.Format, productFormat)
+	if raw.Format != ProductsFormat {
+		return nil, fmt.Errorf(
+			"simplestreams: product file %q has format %q, want %q",
+			path,
+			raw.Format,
+			ProductsFormat,
+		)
 	}
 	if raw.ContentID == "" {
 		return nil, fmt.Errorf("simplestreams: product file %q missing content_id", path)
