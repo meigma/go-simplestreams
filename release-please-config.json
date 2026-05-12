@@ -2,12 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "release-type": "go",
   "include-v-in-tag": true,
-  "draft": true,
+  "include-component-in-tag": false,
+  "initial-version": "0.1.0",
   "bump-minor-pre-major": true,
-  "bump-patch-for-minor-pre-major": true,
   "packages": {
     ".": {
-      "package-name": "go-simplestreams",
       "changelog-path": "CHANGELOG.md"
     }
   },
