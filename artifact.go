@@ -127,6 +127,20 @@ func VerifyReader(r io.Reader, checksums map[string]string, size *int64) error {
 	return nil
 }
 
+// SHA256Concat returns the lowercase hex SHA-256 digest of readers in order.
+func SHA256Concat(readers ...io.Reader) (string, error) {
+	hasher := sha256.New()
+	for i, reader := range readers {
+		if reader == nil {
+			return "", fmt.Errorf("simplestreams: nil SHA-256 reader %d", i)
+		}
+		if _, err := io.Copy(hasher, reader); err != nil {
+			return "", fmt.Errorf("simplestreams: read SHA-256 reader %d: %w", i, err)
+		}
+	}
+	return hex.EncodeToString(hasher.Sum(nil)), nil
+}
+
 func newHasher(algorithm string) (hash.Hash, error) {
 	switch algorithm {
 	case "md5":

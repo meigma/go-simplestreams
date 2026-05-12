@@ -32,7 +32,7 @@ type BuildIndexEntry struct {
 // BuildIndex creates an index document from entries.
 func BuildIndex(entries []BuildIndexEntry, updated string) (*Index, error) {
 	index := &Index{
-		Format:  indexFormat,
+		Format:  IndexFormat,
 		Updated: updated,
 		Entries: make(map[string]*IndexEntry, len(entries)),
 	}

@@ -108,7 +108,7 @@ func (mirror *Mirror) ProductFile(ctx context.Context, entry *IndexEntry) (*Prod
 	if entry == nil {
 		return nil, errors.New("simplestreams: nil index entry")
 	}
-	if entry.Format == indexFormat {
+	if entry.Format == IndexFormat {
 		return nil, fmt.Errorf("simplestreams: index entry %q references nested index %q", entry.ContentID, entry.Path)
 	}
 
